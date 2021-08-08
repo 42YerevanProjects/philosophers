@@ -1,3 +1,3 @@
-### 42_Philosophers
+### Philosophers
 
 The project is still in the process...
