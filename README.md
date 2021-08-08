@@ -1,3 +1,2 @@
-### Philosophers
-
+### 42 Philosophers
 The project is still in the process...
