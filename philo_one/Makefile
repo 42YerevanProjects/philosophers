@@ -12,7 +12,7 @@ RM = rm -rf
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${OBJS} ${PTHREADS}  -o ${NAME}
+	@${CC} ${FLAGS} ${OBJS} ${PTHREADS}  -o ${NAME}
 
 clean:
 	@${RM} ${OBJS}
