@@ -1,5 +1,15 @@
 #include "../includes/philo_one.h"
 
+static int	get_len(char **args)
+{
+	int	len;
+
+	len = 0;
+	while(args[len])
+		len++;
+	return (len);
+}
+
 static int	ft_isnum(char *num)
 {
 	int	i;
@@ -23,10 +33,17 @@ void	check_args(int argc, char **argv)
 	char	**args;	
 
 	i = 0;
-	if (argc != 6 && argc != 7)
-		ft_error("Error: The number of arguments should be 5 or 6");
+	if (argc != 5 && argc != 6 && argc != 2)
+		ft_error("Error: The number of arguments should be 4 or 5");
 	if (argc == 2)
+	{	
 		args = ft_split(argv[1], ' ');
+		if (get_len(args) != 4 && get_len(args) != 5)
+		{
+			ft_free(args);
+			ft_error("Error: The number of arguments should be 4 or 5");
+		}
+	}
 	else
 	{
 		i = 1;
