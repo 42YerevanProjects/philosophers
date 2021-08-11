@@ -1,4 +1,4 @@
-NAME = philo_one
+NAME = philo
 
 SRCS = $(shell find "." -name "*.c")
 OBJS = ${SRCS:.c=.o}
