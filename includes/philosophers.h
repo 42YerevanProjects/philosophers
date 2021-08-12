@@ -7,7 +7,6 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-
 typedef struct	s_mutexes
 {
 	pthread_mutex_t	*m_forks;
@@ -55,6 +54,10 @@ void	ft_usleep(int length);
 int		init_mutex(t_mutex *mutex, t_data *data);
 void	init_data(t_data *data, int argc, char **argv);
 t_philo	*init_threads(t_data *data, t_mutex *mutex);
+
+void    *create_simulation(void *philosopher);
+
+void	print_status(t_philo *philo, char *msg);
 
 #endif
 
