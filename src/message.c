@@ -1,10 +1,12 @@
 #include "../includes/philosophers.h"
 
-void	print_status(long time, int philo, char *msg)
+void	print_status(t_philo *philo, char *msg)
 {
-	char	*buffer;
-	int		size;
+	int		index;
+	long	time;
 
-	//TODO ...
+	index = philo->index;
+	time = get_time_ms() - philo->born_time_ms;
 
+	printf("%ld #%d %s\n", time, index, msg);
 }
