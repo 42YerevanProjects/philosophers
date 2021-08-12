@@ -21,7 +21,7 @@ int	init_mutex(t_mutex *mutex, t_data *data)
 void	init_data(t_data *data, int argc, char **argv)
 {
 	char    **args;
-	int             i;
+	int		i;
 
 	i = 0;
 	if (argc == 2)
@@ -69,7 +69,6 @@ t_philo	*init_threads(t_data *data, t_mutex *mutex)
 		else
 			philos[i].r_fork = mutex->m_forks[i - 1];
 		philos[i].born_time_ms = get_time_ms();
-		philos[i].last_meal = get_time_ms();
 		i++;
 	}
 	return (philos);
