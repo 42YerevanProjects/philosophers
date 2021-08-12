@@ -26,7 +26,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int		ft_nbrlen(long n)
+int	ft_nbrlen(long n)
 {
 	int		size;
 
