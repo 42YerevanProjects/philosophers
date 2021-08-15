@@ -5,7 +5,7 @@ static int	get_len(char **args)
 	int	len;
 
 	len = 0;
-	while(args[len])
+	while (args[len])
 		len++;
 	return (len);
 }
@@ -63,7 +63,7 @@ int	check_args(int argc, char **argv)
 		}
 		if (tmp < -2147483648 || tmp > 2147483647)
 		{
-			printf("Error: arguments contain numbers exceeding the limits of an integer!\n");
+			printf("Error: numbers exceeding the limits of an integer!\n");
 			return (-1);
 		}
 		i++;
@@ -72,4 +72,3 @@ int	check_args(int argc, char **argv)
 		ft_free(args);
 	return (0);
 }
-

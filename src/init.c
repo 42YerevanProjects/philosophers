@@ -2,7 +2,7 @@
 
 int	init_mutex(t_mutex *mutex, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	mutex->m_forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->philo_n);
@@ -14,13 +14,12 @@ int	init_mutex(t_mutex *mutex, t_data *data)
 		i++;
 	}
 	pthread_mutex_init(&mutex->m_write, NULL);
-	pthread_mutex_init(&mutex->m_num_of_meals, NULL);
 	return (0);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
 {
-	char    **args;
+	char	**args;
 	int		i;
 
 	i = 0;
@@ -36,15 +35,10 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->eat_t = ft_atoi(args[i + 2]);
 	data->sleep_t = ft_atoi(args[i + 3]);
 	if (args[i + 4] != NULL)
-	{
 		data->eat_count = ft_atoi(args[i + 4]);
-		data->meal_counter = 0;
-	}
 	else
-	{
 		data->eat_count = -1;
-		data->meal_counter = -1;
-	}
+	data->dead = 0;
 	if (argc == 2)
 		ft_free(args);
 }
@@ -69,8 +63,8 @@ t_philo	*init_threads(t_data *data, t_mutex *mutex)
 		else
 			philos[i].r_fork = mutex->m_forks[i - 1];
 		philos[i].born_time_ms = get_time_ms();
+		philos[i].last_meal = 0;
 		i++;
 	}
 	return (philos);
 }
-

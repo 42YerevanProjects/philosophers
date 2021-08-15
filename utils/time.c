@@ -13,7 +13,6 @@ void	ft_usleep(int length)
 	long	time;
 
 	time = get_time_ms();
-	while(get_time_ms() < time + length)
+	while (get_time_ms() < time + length)
 		usleep(length);
 }
-

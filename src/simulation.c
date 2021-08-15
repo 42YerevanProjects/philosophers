@@ -1,5 +1,16 @@
 #include "../includes/philosophers.h"
 
+static int	is_dead(t_philo *philo)
+{
+	if (philo->last_meal == 0)
+		return (0);
+	printf("starving: %ld\n", (get_time_ms() - philo->last_meal));
+	printf("die: %d\n", philo->data->die_t);
+	if ((get_time_ms() - philo->last_meal) < philo->data->die_t)
+		return (0);
+	return (1);
+}
+
 static void	philosopher_eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->r_fork);
@@ -10,7 +21,6 @@ static void	philosopher_eat(t_philo *philo)
 	print_status(philo, "is eating");
 	usleep(philo->data->eat_t * 1000);
 	philo->last_meal = get_time_ms();
-	philo->data->meal_counter++;
 	pthread_mutex_unlock(&philo->mutex->m_write);
 	pthread_mutex_unlock(&philo->l_fork);
 	pthread_mutex_unlock(&philo->r_fork);
@@ -27,16 +37,26 @@ void	*create_simulation(void	*philosopher)
 {
 	t_philo	*philo;
 	int		limit;
+	int		*ret;
 
 	philo = (t_philo *) philosopher;
 	limit = philo->data->eat_count;
-	while (limit)
+	ret = malloc(sizeof(int));
+	*ret = 0;
+	while (limit && !philo->data->dead)
 	{
+		
 		philosopher_eat(philo);
 		philosopher_sleep_and_think(philo);
+		if (is_dead(philo) && limit == -1)
+		{	
+			*ret = philo->index;
+			philo->data->dead = 1;
+			return ((void *)ret);
+		}
 		if (limit != -1)
 			limit--;
-		usleep(10 * 1000);
+		//usleep(10 * 100);
 	}
+	return ((void *)ret);
 }
-

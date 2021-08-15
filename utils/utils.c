@@ -16,6 +16,31 @@ void	ft_free(char **str)
 		free(str[i--]);
 }
 
+void	cleanup(t_mutex *mutex, t_data *data, t_philo *philos)
+{
+	int	size;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	size = philos[0].data->philo_n;
+	while (i < size)
+		pthread_mutex_destroy(&mutex->m_forks[i++]);
+	pthread_mutex_destroy(&mutex->m_write);
+	free(mutex->m_forks);
+	free(mutex);
+	free(data);
+	i = 0;
+	while (i < size)
+	{	
+		pthread_mutex_destroy(&philos[i].l_fork);
+		pthread_mutex_destroy(&philos[i].r_fork);
+		i++;
+	}
+	free(philos);
+}
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -67,4 +92,3 @@ long	ft_atoi(const char *str)
 	}
 	return (number * sign);
 }
-
