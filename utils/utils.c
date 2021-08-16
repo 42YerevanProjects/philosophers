@@ -34,8 +34,8 @@ void	cleanup(t_mutex *mutex, t_data *data, t_philo *philos)
 	i = 0;
 	while (i < size)
 	{	
-		pthread_mutex_destroy(&philos[i].l_fork);
-		pthread_mutex_destroy(&philos[i].r_fork);
+		pthread_mutex_destroy(philos[i].l_fork);
+		pthread_mutex_destroy(philos[i].r_fork);
 		i++;
 	}
 	free(philos);
