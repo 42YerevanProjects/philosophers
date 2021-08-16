@@ -1,6 +1,6 @@
 #include "../includes/philosophers.h"
 
-long	get_time_ms(void)
+long long	get_time_ms(void)
 {
 	struct timeval	t;
 
@@ -10,7 +10,7 @@ long	get_time_ms(void)
 
 void	ft_usleep(int length)
 {
-	long	time;
+	long long	time;
 
 	time = get_time_ms();
 	while (get_time_ms() < time + length)
