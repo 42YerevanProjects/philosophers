@@ -25,36 +25,37 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_t		t_id;
-	int				index;
-	long			born_time_ms;
-	long			last_meal;
-	t_mutex			*mutex;
-	t_data			*data;
+	pthread_mutex_t		*r_fork;
+	pthread_mutex_t		*l_fork;
+	pthread_t			t_id;
+	int					index;
+	long long			born_time_ms;
+	long long			last_meal;
+	t_mutex				*mutex;
+	t_data				*data;
 
 }				t_philo;
 
 // Util functions
-int		ft_isdigit(int c);
-void	ft_free(char **str);
-long	ft_atoi(const char *str);
-int		ft_nbrlen(long n);
-size_t	ft_strlen(const char *s);
-char	**ft_split(const char *s, char c);
+int			ft_isdigit(int c);
+void		ft_free(char **str);
+long		ft_atoi(const char *str);
+int			ft_nbrlen(long n);
+size_t		ft_strlen(const char *s);
+char		**ft_split(const char *s, char c);
 
-int		check_args(int argc, char **argv);
-long	get_time_ms(void);
-void	ft_usleep(int length);
-void	cleanup(t_mutex *mutex, t_data *data, t_philo *philos);
+int			check_args(int argc, char **argv);
+long long	get_time_ms(void);
+void		ft_usleep(int length);
+void		cleanup(t_mutex *mutex, t_data *data, t_philo *philos);
 
 // Sources
-int		init_mutex(t_mutex *mutex, t_data *data);
-void	init_data(t_data *data, int argc, char **argv);
-t_philo	*init_threads(t_data *data, t_mutex *mutex);
+int			init_mutex(t_mutex *mutex, t_data *data);
+void		init_data(t_data *data, int argc, char **argv);
+t_philo		*init_threads(t_data *data, t_mutex *mutex);
 
-void	*create_simulation(void *philosopher);
-void	print_status(t_philo *philo, char *msg);
+void		*create_simulation(void *philosopher);
+void		print_status(t_philo *philo, char *msg);
 
 #endif
+
