@@ -25,8 +25,8 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	pthread_mutex_t	r_fork;
-	pthread_mutex_t	l_fork;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
 	pthread_t		t_id;
 	int				index;
 	long			born_time_ms;
