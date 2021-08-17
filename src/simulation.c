@@ -4,7 +4,9 @@ static int	is_dead(t_philo *philo)
 {
 	if (philo->last_meal == 0)
 		return (0);
-	if ((get_time_ms() - philo->last_meal) < philo->data->die_t)
+	//printf("dite time : %d\n", philo->data->die_t);
+	//printf ("Passed : %d\n", get_time_ms() - philo->last_meal);
+	if ((get_time_ms() - philo->last_meal) <= philo->data->die_t)
 		return (0);
 	return (1);
 }
@@ -15,11 +17,11 @@ static void	philosopher_eat(t_philo *philo)
 	pthread_mutex_lock(philo->l_fork);
 	print_status(philo, "has taken a fork");
 	print_status(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->mutex->m_write);
 	philo->last_meal = get_time_ms();
+	pthread_mutex_lock(&philo->mutex->m_write);
 	print_status(philo, "is eating");
-	usleep(philo->data->eat_t * 1000);
 	pthread_mutex_unlock(&philo->mutex->m_write);
+	usleep(philo->data->eat_t * 1000);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 }
@@ -46,15 +48,15 @@ void	*create_simulation(void	*philosopher)
 		
 		philosopher_eat(philo);
 		philosopher_sleep_and_think(philo);
+		if (limit != -1)
+			limit--;
 		if (is_dead(philo) && limit == -1)
 		{	
 			*ret = philo->index;
 			philo->data->dead = 1;
 			return ((void *)ret);
 		}
-		if (limit != -1)
-			limit--;
-		//usleep(10 * 100);
 	}
 	return ((void *)ret);
 }
+
