@@ -42,7 +42,7 @@ static int	join_threads(t_philo *philos)
 		}
 		if (*(int *)status != 0)
 		{
-			print_status(&philos[*(int *)status - 1], "died");
+			printf("%lld #%d died\n", philos[*(int *)status -1].death_time - philos[*(int *)status -1].born_time_ms, *(int *)status);
 			free(status);
 			return (0);
 		}
