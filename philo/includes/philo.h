@@ -20,7 +20,8 @@ typedef struct s_data
 	int	eat_t;
 	int	sleep_t;
 	int	eat_count;	
-	int	dead;	
+	int	dead;
+	int	death_count;
 }				t_data;
 
 typedef struct s_philo
@@ -31,6 +32,7 @@ typedef struct s_philo
 	int					index;
 	long long			born_time_ms;
 	long long			last_meal;
+	long long			death_time;
 	t_mutex				*mutex;
 	t_data				*data;
 
@@ -55,7 +57,7 @@ void		init_data(t_data *data, int argc, char **argv);
 t_philo		*init_threads(t_data *data, t_mutex *mutex);
 
 void		*create_simulation(void *philosopher);
-void		print_status(t_philo *philo, char *msg);
+int		print_status(t_philo *philo, char *msg);
 
 #endif
 
