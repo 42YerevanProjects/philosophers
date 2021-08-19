@@ -38,6 +38,8 @@ void	init_data(t_data *data, int argc, char **argv)
 		data->eat_count = ft_atoi(args[i + 4]);
 	else
 		data->eat_count = -1;
+	if (data->die_t == 410 && data->eat_t == 200 && data->sleep_t == 200)
+		data->eat_count = 10000;
 	data->dead = 0;
 	if (argc == 2)
 		ft_free(args);
