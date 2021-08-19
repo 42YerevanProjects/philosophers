@@ -21,7 +21,6 @@ typedef struct s_data
 	int	sleep_t;
 	int	eat_count;	
 	int	dead;
-	int	death_count;
 }				t_data;
 
 typedef struct s_philo

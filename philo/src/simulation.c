@@ -7,8 +7,6 @@ static int	is_dead(t_philo *philo)
 	if ((get_time_ms() - philo->last_meal) <= philo->data->die_t)
 		return (0);
 	philo->death_time = get_time_ms();
-	philo->data->death_count++;
-	philo->data->dead = 1;
 	return (1);
 }
 
@@ -50,12 +48,14 @@ void	*create_simulation(void	*philosopher)
 		if (is_dead(philo) && limit == -1)
 		{	
 			*ret = philo->index;
+			philo->data->dead = 1;
 			return ((void *)ret);
 		}
 		philosopher_sleep_and_think(philo);
 		if (is_dead(philo) && limit == -1)
 		{	
 			*ret = philo->index;
+			philo->data->dead = 1;
 			return ((void *)ret);
 		}
 		if (limit != -1)
