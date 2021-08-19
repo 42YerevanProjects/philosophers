@@ -22,6 +22,14 @@ void	ft_error(char *msg)
 	exit(0);
 }
 
+void	cleanup(t_philo *philos, t_semaphore *sem)
+{
+	sem_close(sem->fork);
+	sem_close(sem->write);
+	sem_close(sem->end);
+	free(philos);
+}
+
 int	ft_nbrlen(long n)
 {
 	int		size;

@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	init_semaphore(&sem, data.philo_n);
 	philos = init_philos(&data, &sem);
 	launch_process(philos);
+	cleanup(philos, &sem);
 	return (0);
 }
 

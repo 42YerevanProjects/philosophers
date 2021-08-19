@@ -4,7 +4,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 # include <fcntl.h>
 # include <signal.h>
 # include <sys/wait.h>
@@ -48,6 +47,7 @@ size_t		ft_strlen(const char *s);
 char		**ft_split(const char *s, char c);
 void		ft_error(char *msg);
 void		check_args(int argc, char **argv);
+void    	cleanup(t_philo *philos, t_semaphore *sem);
 
 long long	get_time_ms(void);
 void		ft_usleep(int length);

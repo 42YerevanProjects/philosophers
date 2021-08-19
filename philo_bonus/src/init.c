@@ -52,6 +52,5 @@ t_philo	*init_philos(t_data *data, t_semaphore *sem)
 		philos[i].data = data;
 		i++;
 	}
-
 	return (philos);
 }
