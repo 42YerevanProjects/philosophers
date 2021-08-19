@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/19 18:43:21 by shovsepy          #+#    #+#             */
+/*   Updated: 2021/08/19 18:43:23 by shovsepy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo_bonus.h"
 
 static void	launch_process(t_philo *philos)
 {
-	int 	i;
+	int		i;
 	int		status;
 	int		size;
 
@@ -43,4 +55,3 @@ int	main(int argc, char **argv)
 	cleanup(philos, &sem);
 	return (0);
 }
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/19 18:39:42 by shovsepy          #+#    #+#             */
+/*   Updated: 2021/08/19 18:39:44 by shovsepy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static int	launch_threads(t_philo *philos)
@@ -11,7 +23,7 @@ static int	launch_threads(t_philo *philos)
 	while (i < size)
 	{
 		philos[i].born_time_ms = get_time_ms();
-		ret = pthread_create(&philos[i].t_id, NULL, create_simulation, (void*)&philos[i]);
+		ret = pthread_create(&philos[i].t_id, NULL, create_simulation, (void *)&philos[i]);
 		if (ret != 0)
 		{
 			printf("Something went wrong while creating a thread\n");
@@ -42,7 +54,7 @@ static int	join_threads(t_philo *philos)
 		}
 		if (*(int *)status != 0)
 		{
-			printf("%lld #%d died\n", philos[*(int *)status -1].death_time - philos[*(int *)status -1].born_time_ms, *(int *)status);
+			printf("%lld #%d died\n", philos[*(int *)status - 1].death_time - philos[*(int *)status - 1].born_time_ms, *(int *)status);
 			free(status);
 			return (0);
 		}
