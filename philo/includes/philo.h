@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/19 18:34:45 by shovsepy          #+#    #+#             */
+/*   Updated: 2021/08/19 18:36:09 by shovsepy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -44,7 +56,6 @@ long		ft_atoi(const char *str);
 int			ft_nbrlen(long n);
 size_t		ft_strlen(const char *s);
 char		**ft_split(const char *s, char c);
-
 int			check_args(int argc, char **argv);
 long long	get_time_ms(void);
 void		ft_usleep(int length);
@@ -56,7 +67,6 @@ void		init_data(t_data *data, int argc, char **argv);
 t_philo		*init_threads(t_data *data, t_mutex *mutex);
 
 void		*create_simulation(void *philosopher);
-int		print_status(t_philo *philo, char *msg);
+int			print_status(t_philo *philo, char *msg);
 
 #endif
-
