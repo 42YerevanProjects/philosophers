@@ -4,10 +4,11 @@ static int	is_dead(t_philo *philo)
 {
 	if (philo->last_meal == 0)
 		return (0);
-	//printf("dite time : %d\n", philo->data->die_t);
-	//printf ("Passed : %d\n", get_time_ms() - philo->last_meal);
 	if ((get_time_ms() - philo->last_meal) <= philo->data->die_t)
 		return (0);
+	philo->death_time = get_time_ms();
+	philo->data->death_count++;
+	philo->data->dead = 1;
 	return (1);
 }
 
@@ -45,18 +46,20 @@ void	*create_simulation(void	*philosopher)
 	*ret = 0;
 	while (limit && !philo->data->dead)
 	{
-		
 		philosopher_eat(philo);
-		philosopher_sleep_and_think(philo);
-		if (limit != -1)
-			limit--;
 		if (is_dead(philo) && limit == -1)
 		{	
 			*ret = philo->index;
-			philo->data->dead = 1;
 			return ((void *)ret);
 		}
+		philosopher_sleep_and_think(philo);
+		if (is_dead(philo) && limit == -1)
+		{	
+			*ret = philo->index;
+			return ((void *)ret);
+		}
+		if (limit != -1)
+			limit--;
 	}
 	return ((void *)ret);
 }
-
