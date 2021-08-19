@@ -39,7 +39,6 @@ void	init_data(t_data *data, int argc, char **argv)
 	else
 		data->eat_count = -1;
 	data->dead = 0;
-	data->death_count = 0;
 	if (argc == 2)
 		ft_free(args);
 }
