@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/19 18:52:18 by shovsepy          #+#    #+#             */
+/*   Updated: 2021/08/19 18:52:20 by shovsepy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo_bonus.h"
 
 int	word_count(char const *s, char c)
@@ -75,4 +87,3 @@ char	**ft_split(const char *s, char c)
 	result[wcount] = NULL;
 	return (result);
 }
-
