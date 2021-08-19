@@ -32,6 +32,11 @@ int	main(int argc, char **argv)
 
 	check_args(argc, argv);
 	init_data(&data, argc, argv);
+	if (data.philo_n == 1)
+	{
+		printf("0 #1 died\n");
+		return (0);
+	}
 	init_semaphore(&sem, data.philo_n);
 	philos = init_philos(&data, &sem);
 	launch_process(philos);
