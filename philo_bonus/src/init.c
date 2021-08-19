@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/19 18:46:09 by shovsepy          #+#    #+#             */
+/*   Updated: 2021/08/19 18:46:10 by shovsepy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo_bonus.h"
 
 void	init_semaphore(t_semaphore *sem, int len)
@@ -7,7 +19,7 @@ void	init_semaphore(t_semaphore *sem, int len)
 	sem_unlink("end");
 	sem->fork = sem_open("fork", O_CREAT | O_RDWR, 0660, len / 2);
 	sem->write = sem_open("write", O_CREAT | O_RDWR, 0660, 1);
-	sem->end = sem_open("end", O_CREAT | O_RDWR, 0660, 1);	
+	sem->end = sem_open("end", O_CREAT | O_RDWR, 0660, 1);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -35,11 +47,10 @@ void	init_data(t_data *data, int argc, char **argv)
 		ft_free(args);
 }
 
-
 t_philo	*init_philos(t_data *data, t_semaphore *sem)
 {
 	t_philo *philos;
-	int	i;
+	int		i;
 
 	i = 0;
 	philos = (t_philo *)malloc(sizeof(t_philo) * data->philo_n);
